@@ -1,0 +1,36 @@
+****Data training set preparation:
+   For instance: n data point (x_i, y_i). We have the input x_(i + 1) and must predict the value of y_(i + 1).
+                 
+****Set up the hypothesis function:
+   For instance:
+      def hypo(X, w):
+        return X@w
+
+****Set up the loss function:
+  L(w) = frac{1}{2n} * \sum \limits^{n}_{i = 1} (h(x_i) - y_i)^2, h(x_i) is the predict function and:
+      h(x) = X.T@w
+  We can convert that function to the matrix type.
+
+    For instance:
+      def cost(X, Y, w):
+           loss = (hypo(X, w) - Y)**2
+           loss = np.mean(loss)
+           return loss/2
+
+****Set up the gradient function:
+    For instance:
+        def gradient(X, Y, w, n):
+            grad = X.T*(hypo(X, w) - Y)
+            grad = grad/n
+            return grad
+
+****Find w for minimizing the loss by gradient descent formula:
+    Assign learning_rate, numbers_grad to ...
+    For instance: 
+        for i in range(numbers_grad):
+            grad = gradient(X, Y, w, n)
+            w = w - learning_rate * grad
+
+****Test the result
+    
+  

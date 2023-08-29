@@ -1,0 +1,19 @@
+Given D = {(x_1, y_1), (x_2, y_2),..., (x_M, y_M)}, we solve for:
+    f* = argminRSS(f)_f + \lambda * ||w||_2^{2}.
+<=> w* = argmin \sum^M_{i = 1} (y_i - x_i^T*w)^2 + \lambda * \sum^{n}_{i = 0} w_i^2. (1)
+
+Where x_i = [1, x_i1, x_i2,..., x_in]^T and \lambda > 0 (regularization constant, dai luong dieu chinh), ||w||_2 is L^2 norm, w = [w_0, w_1,..., w_n]^T.
+
+We solve for w* by taking the gradient of the objective function in (1) and zeroing it.
+Therefor, we have:
+   w* = (X*X^T + \lambda*I)^{-1}XY.
+Because, X*X^T + \lambda*I is always invertible.
+
+Where X is the matrix that the column i^{th} is the x_i.
+So, we will have the predict function:
+  y* = w_0* + w_1*x_1 + ... + w_n*x_n.
+
+----Note: the predictiveness of Ridge regression depends heavily on the parameter \lambda. 
+----Compare it to OLS (binh phuong toi thieu):
+    + Ridge can avoid the case that X*X^T is not invertible.
+    + Reduce Overfitting
